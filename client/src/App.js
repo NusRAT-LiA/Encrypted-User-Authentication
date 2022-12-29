@@ -4,6 +4,7 @@ import { RegistrationForm } from './components';
 import { Login } from './components';
 import RegistrationFrom from "./components/RegistrationFrom";
 
+
 function App() {
 
   const [currentForm, setCurrentForm] = useState('login');

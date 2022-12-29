@@ -7,6 +7,25 @@ const RegistrationFrom =(props)=>
     const [email, setEmail] = useState('');
     const [pass, setPass] = useState('');
     const [name, setName] = useState('');
+
+    const addUser = () => {
+      Axios.post("http://localhost:3001/create", {
+        name: name,
+        email: email,
+        password: pass,
+      }).then(() => {
+        setUserList([
+          ...employeeList,
+          {
+            name: name,
+            age: age,
+            country: country,
+            position: position,
+            wage: wage,
+          },
+        ]);
+      });
+    };
    
     return(
         <div className="register">
@@ -23,7 +42,7 @@ const RegistrationFrom =(props)=>
             </div>
             <label htmlFor="password" className=" uppercase  text-gray-700  font-bold ">password</label><br/>
             <input value={pass} onChange={(e) => setPass(e.target.value)} type="password" placeholder="********" id="password" name="password" className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"required minLength={8}/><br/><br/>
-            <button type="submit" className="bg-purple-500 hover:bg-violet-700 text-white font-bold py-2 px-4  mx-8 rounded ">Sign In</button> <button className="link-btn hover:text-white" onClick={() => props.onFormSwitch('login')}>Already have an account? Login here.</button>
+            <button type="submit" className="bg-purple-500 hover:bg-violet-700 text-white font-bold py-2 px-4  mx-8 rounded " onClick={addUser} >Sign In</button> <button className="link-btn hover:text-white" onClick={() => props.onFormSwitch('login')}>Already have an account? Login here.</button>
         </form>
        
           </div>
