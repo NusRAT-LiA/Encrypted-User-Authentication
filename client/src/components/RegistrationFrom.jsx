@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import Axios from 'axios';
 
 
 const RegistrationFrom =(props)=>
@@ -14,17 +14,9 @@ const RegistrationFrom =(props)=>
         email: email,
         password: pass,
       }).then(() => {
-        setUserList([
-          ...employeeList,
-          {
-            name: name,
-            age: age,
-            country: country,
-            position: position,
-            wage: wage,
-          },
-        ]);
+        console.log("SuCCEss");
       });
+      
     };
    
     return(
